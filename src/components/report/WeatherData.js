@@ -5,7 +5,7 @@ import mpkToKph from '../../utils/mphToKph';
 const WeatherData = () => {
     const { report, metricSystem } = useGlobalContext();
     return (
-        <div className='container'>
+        <section className='container'>
             <div className='containerDesc'>Weather conditions today</div>
             <div className='containerContent'>
             <div className='box'>
@@ -13,7 +13,7 @@ const WeatherData = () => {
                 <p>Humidity</p>
             </div>
             <div className='box'>
-                <h4>{report.current.pressure_in}</h4>
+                <h4>{report.current.pressure_in} Pa</h4>
                 <p>Pressure</p>
             </div>
             <div className='box'>
@@ -21,7 +21,7 @@ const WeatherData = () => {
                 <p>Wind Speed</p>
             </div>
             </div>
-        </div>
+        </section>
     )
 }
 

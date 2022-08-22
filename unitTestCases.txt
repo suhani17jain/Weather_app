@@ -1,0 +1,58 @@
+describe('initialize') {
+it('should initialize the location with data if local storage is present'){
+expect (location).toBeDefined();
+}
+
+it('should initialize the unitSystem with data if local storage is present'){
+expect (Units).toBeDefined();
+}
+
+it('should initialize getData method if location is present in local storage'){
+	if(localStorage.getItem('location')) {
+		expect (getData).toBeCalled.
+	}
+}
+}
+
+describe('getLocationSuggestions') {
+it(shouls test getLocationSuggestions to be defined) {
+	expect(getLocationSuggestions).toBeDefined;
+}
+
+it(should test getLocationSuggestions to be a function) {
+	expect(typeof getLocationSuggestions).toBe('function')
+}
+
+it(should test the getLocationSuggestions function) {
+	const url = `https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json`;
+	axios.get(url).then((res) => {
+		expect(res).toBeDefined;
+		expect(res).not.toEqual([]);
+	}	
+}
+}
+
+describe('getData') {
+it(shouls test getData to be defined) {
+	expect(getData).toBeDefined;
+}
+
+it(should test getData to be a function) {
+	expect(typeof getData).toBe('function')
+}
+
+it(should test the getData function with wrong parameters) {
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=random&days=10&aqi=no`
+	axios.get(url).then((res) => {
+		expect(res).toBeNotDefined;
+	}.catch((err) => {expect(err).toBeDefined});
+}
+
+it(should test the getData function with wrong parameters) {
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=delhi&days=10&aqi=no`
+	axios.get(url).then((res) => {
+		expect(res).toBeDefined;
+		expect(res).not.toEqual([]);
+	}.catch((err) => {expect(err).toBeNotDefined});
+}
+}

@@ -6,14 +6,17 @@ import celsiusToFarh from '../../utils/celsiusToFarh';
 const WeatherForecast = () => {
     const { report, metricSystem } = useGlobalContext();
     return (
-        <div className='container'>
+        <section className='container'>
             <div className='containerDesc'>10 days forecast</div>
             {
             report.forecast.forecastday.map((item, index) => {
                 const {date, day} = item;
                 return (
                 <div className='dayContainer' key={index}>
-                    <p>{moment(date).format('dddd')}</p>
+                    <div className='weatherDesc'>
+                        <p>{moment(date).format('dddd')}</p>
+                        <h5>{moment(report.location.localtime).format('L').slice(0,-5)}</h5>
+                    </div>
                     <div className='weatherDesc'>
                         <img src={day.condition.icon} className='weatherImg'
                         alt={day.condition.text}></img>
@@ -25,7 +28,7 @@ const WeatherForecast = () => {
                 )
             })
             }
-        </div>
+        </section>
     )
 }
 

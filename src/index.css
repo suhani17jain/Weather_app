@@ -172,6 +172,10 @@ button:active {
   margin-bottom: 1rem;
 }
 
+.weatherDesc p {
+  margin-bottom: 0;
+}
+
 .weatherImg {
   width: 4rem;
   height: 4rem;
@@ -184,6 +188,7 @@ button:active {
   margin: 1rem 0.5rem;
   border-radius: 10px;
   padding: 1rem 2rem;
+  position: relative;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -191,6 +196,10 @@ button:active {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid #fff;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #cbe1ef;
 }
 
 .containerContent,
@@ -218,13 +227,20 @@ button:active {
 .dayContainer .weatherDesc {
   display: flex;
   flex-direction: column;
-  flex: 40%;
+  flex: 30% 0;
   text-align: center;
 }
 
 .inputContainer {
   position: relative;
   width: 100%;
+}
+
+.loader {
+  margin-top: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .autoSuggestion {

@@ -6,9 +6,8 @@ import celsiusToFarh from '../../utils/celsiusToFarh';
 
 const WeatherReport = () => {
     const { report, metricSystem, setUnitValue } = useGlobalContext();
-
     return (
-        <div className='mainReport'>
+        <section className='mainReport'>
               <h6>{moment(report.location.localtime).format('MMMM Do YYYY')}</h6>
               <h3>{report.location.name}</h3>
               {metricSystem ? <h1>{report.current.temp_c.toFixed()}°C</h1> : <h1>{celsiusToFarh(report.current.temp_c.toFixed())}°F</h1>}
@@ -20,8 +19,8 @@ const WeatherReport = () => {
                 submitData = {setUnitValue}
                 text = {'Switch Units'}
               />
-            </div>
+        </section>
     )
 }
 
-export default WeatherReport
+export default React.memo(WeatherReport)

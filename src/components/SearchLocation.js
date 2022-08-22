@@ -10,6 +10,10 @@ const SearchLocation = () => {
     const { location, setLocation, getData } = useGlobalContext();
     const url = `https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json`;
 
+    function searchLocation(value) {
+      setLocation(value);
+      optimizedSearch(value);
+    }
 
     const getLocationSuggestions = (text) => {
         if (text.length > 0) {
@@ -29,23 +33,18 @@ const SearchLocation = () => {
     
       const optimizedSearch = useCallback(Debounce(getLocationSuggestions), []);
     
-      const handleInputData = (text) => {
-        setLocation(text);
-        optimizedSearch(text);
-      }
     
       const handleLocationSuggestions = (text) => {
         setLocation(text);
         setSearchData([]);
       }
     return (
-        <div className="searchContainer">
+        <section className="searchContainer">
             <div className='inputContainer'>
             <InputContainer 
                 value = {location}
-                setData = {handleInputData}
+                setData = {searchLocation}
                 placeholder = {'Enter City or Zip code'}
-                setSearchData = {setSearchData}
                 />
                 {
                 searchData?.length > 0 && <div className='autoSuggestion'>
@@ -61,7 +60,7 @@ const SearchLocation = () => {
                 submitData = {getData}
                 text = {'Search'}
             />
-        </div>
+        </section>
     )
 }
 
